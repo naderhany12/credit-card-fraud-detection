@@ -25,14 +25,22 @@ Tackles the fraud detection challenge by treating fraudulent transactions as rar
 
 ---
 
-## 📈 Performance Summary (Supervised Models)
+## 📈 Performance Summary & Comparison
 
-| Model | Test Precision | Test Recall | Best F1-Score |
-| **Logistic Regression(Baseline)** | 5.0%  | 87.76% | 9.46% |
-| **Random Forest (Baseline)** | 26.62% | 83.67 % | 40.39% |
-| **XGBoost (Optimized via CUDA)** | **95.24%** | **81.63%** | **87.91%** |
+Below is the comparative analysis of both approaches. It highlights how supervised models excel when labeled historical data is available, while unsupervised models serve as a strong baseline when labels are scarce or when detecting completely new fraud patterns.
 
-> *Note: In fraud detection, we intentionally optimize for a higher **Recall** (83.6%) to catch more fraudulent cases, accepting a minor, calculated trade-off in Precision.*
+### Model Performance
+
+| Approach | Model | Test Precision | Test Recall | Best F1-Score |
+| :--- | :--- | :---: | :---: | :---: |
+| **Supervised** | Logistic Regression (Baseline) | 5.00% | 87.76% | 9.46% |
+| **Supervised** | Random Forest (Baseline) | 26.62% | 83.67% | 40.39% |
+| **Supervised** | **XGBoost (Optimized via CUDA)** | **95.24%** | **81.63%** | **87.91%** |
+| **Unsupervised** | Isolation Forest (Anomaly Detection) | 17.91% | 73.98% | 28.84% |
+
+> *Note: While the Supervised XGBoost achieves the highest overall F1-Score (87.91%), the Unsupervised Isolation Forest serves as an essential defense line to catch "zero-day" fraud attacks that **do not look like past fraud patterns**.*
+
+> *Note: In fraud detection, we intentionally optimize for a higher **Recall** to catch more fraudulent cases, accepting a minor, calculated trade-off in Precision.*
 
 ---
 
