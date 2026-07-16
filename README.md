@@ -43,6 +43,18 @@ Below is the comparative analysis of both approaches. It highlights how supervis
 > *Note: In fraud detection, we intentionally optimize for a higher **Recall** to catch more fraudulent cases, accepting a minor, calculated trade-off in Precision.*
 
 ---
+### ⚖️ The Trade-off: Supervised vs. Unsupervised in Fraud Detection
+
+Choosing the right approach depends heavily on the production environment and data availability:
+
+* **Supervised Learning (XGBoost):**
+  * **Pros:** Highly accurate; effectively minimizes false positives (95.24% Precision), saving customer support overhead.
+  * **Cons:** Prone to overfitting on known patterns. If fraudsters invent a completely new technique (Zero-Day Fraud), the supervised model will likely miss it because it has never seen it before.
+  
+* **Unsupervised Anomaly Detection (Isolation Forest):**
+  * **Pros:** Does not require fraud labels for training. It simply models "normal spending behavior" and flags anything that deviates. This makes it incredibly powerful at catching **novel, unseen fraud strategies**.
+  * **Cons:** Lower recall (51.02%) and higher false-positive rates compared to heavily tuned supervised models.
+
 
 ## 🛠️ Tech Stack & Libraries
 * **Language:** Python 3.12
